@@ -56,7 +56,7 @@ const Manage = () => {
             </tr>
           </thead>
           <tbody>
-            {appointment.map((appointmentData) => (
+            {appointment.map(appointmentData => (
               <ManageCard
                 key={appointmentData._id}
                 appointmentData={appointmentData}
