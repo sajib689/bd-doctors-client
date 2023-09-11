@@ -29,6 +29,26 @@ const ManagePatient = () => {
     const filter = appointment.filter(app => app._id !== _id);
     setAppointment(filter)
   }
+  const handleUpdateRequest = _id => {
+    fetch(`https://bd-doctors-server.vercel.app/appointment/${_id}`,{
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({status: 'confirm'})
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+      if(data.modifiedCount > 0) {
+        const remaining = appointment.filter(n => n._id !== _id)
+        const updated = appointment.find(n => n._id === _id)
+        updated.status ='confirm'
+        const newAppointment = [updated, ...remaining]
+        setAppointment(newAppointment)
+      }
+    })
+  }
     return (
         <div>
             <div className="mt-7">
@@ -64,6 +84,7 @@ const ManagePatient = () => {
                 key={appointmentData._id}
                 appointmentData={appointmentData}
                 handleDelete={handleDelete}
+                handleUpdateRequest={handleUpdateRequest}
               ></ManageCard>
             ))}
           </tbody>
