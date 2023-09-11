@@ -1,7 +1,7 @@
 import Swal from "sweetalert2";
-import ManageCard from "../../Appoinment/ManageCard/ManageCard";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import ManagePatientCard from './ManagePatientCard';
 
 const ManagePatient = () => {
   const [appointment, setAppointment] = useState([]);
@@ -39,9 +39,8 @@ const ManagePatient = () => {
     })
     .then(res => res.json())
     .then(data => {
-      console.log(data)
       if(data.modifiedCount > 0) {
-        const remaining = appointment.filter(n => n._id !== _id)
+        const remaining = appointment.filter(app => app._id !== _id)
         const updated = appointment.find(p => p._id === _id)
         updated.status ='confirm'
         const newAppointment = [updated, ...remaining]
@@ -80,12 +79,12 @@ const ManagePatient = () => {
           </thead>
           <tbody>
             {appointment.map((appointmentData) => (
-              <ManageCard
+              <ManagePatientCard
                 key={appointmentData._id}
                 appointmentData={appointmentData}
                 handleDelete={handleDelete}
                 handleUpdateRequest={handleUpdateRequest}
-              ></ManageCard>
+              ></ManagePatientCard>
             ))}
           </tbody>
         </table>
