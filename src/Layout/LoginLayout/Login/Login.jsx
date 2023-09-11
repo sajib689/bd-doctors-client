@@ -7,7 +7,7 @@ const Login = () => {
     const {loginForm} = useContext(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
-    const from = location.state?.from?.pathname || ''
+    const from = location.state?.from?.pathname || '/'
     const handleLogin = e => {
         e.preventDefault();
         const form = e.target
@@ -26,6 +26,7 @@ const Login = () => {
               })
             }
             navigate(from, {replace: true})
+           
         })
         .catch(error => {
           if(error) {
