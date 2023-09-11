@@ -9,8 +9,13 @@ const Manage = () => {
   
   const url = `https://bd-doctors-server.vercel.app/appointment?email=${user?.email}`;
   useEffect(() => {
-    fetch(url)
-      .then((res) => res.json())
+    fetch(url,{
+      method: 'GET',
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('access-token')}`
+      }
+    })
+      .then('(res) => res.json())
       .then((data) => setAppointment(data));
   }, [url]);
   const handleDelete = _id => {
