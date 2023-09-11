@@ -14,6 +14,7 @@ const Navbar = () => {
         showConfirmButton: false,
         timer: 1500,
       });
+      localStorage.removeItem('access-token')
     });
   };
   return (
