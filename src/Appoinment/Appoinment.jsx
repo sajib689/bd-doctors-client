@@ -19,7 +19,7 @@ const Appoinment = () => {
         const address = form.address.value 
         const problem = form.problem.value 
         const appointment = {patientName, date, name, number, email, address, problem}
-        fetch('http://localhost:3000/appointment',{
+        fetch('https://bd-doctors-server.vercel.app/appointment',{
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

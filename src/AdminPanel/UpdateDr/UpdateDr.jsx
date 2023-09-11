@@ -15,7 +15,7 @@ const UpdateDr = () => {
     const img = form.img.value;
     const job = form.job.value;
     const updateData = { name, title, college, visting, call, img, job };
-    fetch(`http://localhost:3000/services/${_id}`,{
+    fetch(`https://bd-doctors-server.vercel.app/services/${_id}`,{
         method: 'PUT',
         headers: {
             'content-type': 'application/json'

@@ -14,7 +14,7 @@ const Manage = () => {
       .then((data) => setAppointment(data));
   }, [url]);
   const handleDelete = _id => {
-    fetch(`http://localhost:3000/appointment/${_id}`,{
+    fetch(`https://bd-doctors-server.vercel.app/appointment/${_id}`,{
         method: 'DELETE',
     })
     .then(res => res.json())

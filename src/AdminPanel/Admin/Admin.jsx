@@ -15,7 +15,7 @@ const Admin = () => {
     const img = form.img.value;
     const job = form.job.value;
     const postdata = { name, title, college, visting, call, img, job };
-    fetch("http://localhost:3000/services", {
+    fetch("https://bd-doctors-server.vercel.app/services", {
       method: "POST",
       headers: {
         "content-type": "application/json",

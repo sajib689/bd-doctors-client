@@ -10,14 +10,14 @@ const ManageDr = () => {
     const { user } = useContext(AuthContext);
     const [doctors, setDoctors] = useState([]);
     
-    const url = `http://localhost:3000/services`;
+    const url = `https://bd-doctors-server.vercel.app/services`;
     useEffect(() => {
       fetch(url)
         .then((res) => res.json())
         .then((data) => setDoctors(data));
     }, [url]);
     const handleDelete = _id => {
-      fetch(`http://localhost:3000/services/${_id}`,{
+      fetch(`https://bd-doctors-server.vercel.app/services/${_id}`,{
           method: 'DELETE',
       })
       .then(res => res.json())

@@ -26,7 +26,7 @@ const router = createBrowserRouter([
         path: "/appointment/:id",
         element: <PrivateRoute><Appoinment></Appoinment></PrivateRoute>,
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/services/${params.id}`),
+          fetch(`https://bd-doctors-server.vercel.app/services/${params.id}`),
       },
     ],
   },
@@ -63,7 +63,7 @@ const router = createBrowserRouter([
   {
     path: '/updatedr/:id',
     element: <UpdateDr></UpdateDr>,
-    loader: ({params}) => fetch(`http://localhost:3000/services/${params.id}`)
+    loader: ({params}) => fetch(`https://bd-doctors-server.vercel.app/services/${params.id}`)
   },
 ]);
 
