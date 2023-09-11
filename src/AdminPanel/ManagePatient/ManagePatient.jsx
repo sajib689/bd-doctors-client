@@ -42,7 +42,7 @@ const ManagePatient = () => {
       console.log(data)
       if(data.modifiedCount > 0) {
         const remaining = appointment.filter(n => n._id !== _id)
-        const updated = appointment.find(n => n._id === _id)
+        const updated = appointment.find(p => p._id === _id)
         updated.status ='confirm'
         const newAppointment = [updated, ...remaining]
         setAppointment(newAppointment)
