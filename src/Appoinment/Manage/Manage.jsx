@@ -7,7 +7,7 @@ const Manage = () => {
   const { user } = useContext(AuthContext);
   const [appointment, setAppointment] = useState([]);
   
-  const url = `http://localhost:3000/appointment?email=${user?.email}`;
+  const url = `https://bd-doctors-server.vercel.app/appointment?email=${user?.email}`;
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
