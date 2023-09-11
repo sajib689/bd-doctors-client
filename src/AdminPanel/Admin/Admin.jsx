@@ -59,7 +59,7 @@ const Admin = () => {
               <Link to='/managedr'>Manage Dr</Link>
             </li>
             <li>
-              <Link to='/appointmentmanage'>Manage Patient</Link>
+              <Link to='/managepatient'>Manage Patient</Link>
             </li>
           </ul>
         </div>

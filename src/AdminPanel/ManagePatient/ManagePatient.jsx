@@ -1,12 +1,11 @@
-import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import { AuthContext } from "../../Providers/AuthProviders";
 import ManageCard from "../../Appoinment/ManageCard/ManageCard";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const ManagePatient = () => {
-    const { user } = useContext(AuthContext);
   const [appointment, setAppointment] = useState([]);
-  
+  console.log(appointment)
   const url = `https://bd-doctors-server.vercel.app/appointment`;
   useEffect(() => {
     fetch(url)
@@ -32,8 +31,16 @@ const ManagePatient = () => {
   }
     return (
         <div>
+            <div className="mt-7">
+          <Link
+            to="/admin"
+            className="btn bg-orange-600 text-white hover:bg-orange-700 hover:text-white"
+          >
+            Back
+          </Link>
+        </div>
             <div>
-        <h1 className="text-center text-5xl mt-20 font-[600] ">Appointment List</h1>
+        <h1 className="text-center text-5xl mt-20 font-[600] ">Patient List</h1>
       <div className="overflow-x-auto bg-base-200 mt-20 mb-20 rounded-lg">
         <table className="table">
           {/* head */}

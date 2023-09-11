@@ -12,6 +12,7 @@ import About from "../About/About";
 import Admin from "../AdminPanel/Admin/Admin";
 import ManageDr from "../AdminPanel/ManageDr/ManageDr";
 import UpdateDr from "../AdminPanel/UpdateDr/UpdateDr";
+import ManagePatient from './../AdminPanel/ManagePatient/ManagePatient';
 
 const router = createBrowserRouter([
   { errorElement: <Error></Error>,
@@ -65,6 +66,11 @@ const router = createBrowserRouter([
     element: <UpdateDr></UpdateDr>,
     loader: ({params}) => fetch(`https://bd-doctors-server.vercel.app/services/${params.id}`)
   },
+  {
+    path: '/managepatient',
+    element: <ManagePatient></ManagePatient>
+  },
+  
 ]);
 
 export default router;
