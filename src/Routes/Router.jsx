@@ -11,6 +11,7 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import About from "../About/About";
 import Admin from "../AdminPanel/Admin/Admin";
 import ManageDr from "../AdminPanel/ManageDr/ManageDr";
+import UpdateDr from "../AdminPanel/UpdateDr/UpdateDr";
 
 const router = createBrowserRouter([
   { errorElement: <Error></Error>,
@@ -58,7 +59,12 @@ const router = createBrowserRouter([
   {
     path: '/managedr',
     element: <ManageDr></ManageDr>
-  }
+  },
+  {
+    path: '/updatedr/:id',
+    element: <UpdateDr></UpdateDr>,
+    loader: ({params}) => fetch(`http://localhost:3000/services/${params.id}`)
+  },
 ]);
 
 export default router;

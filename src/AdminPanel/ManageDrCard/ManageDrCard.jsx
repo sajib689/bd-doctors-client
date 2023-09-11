@@ -19,7 +19,7 @@ const ManageDrCard = ({ doctor, handleDelete }) => {
       <td>{college}</td>
 
       <th className="flex items-center justify-center">
-        <button className="btn btn-ghost btn-xs bg-orange-400">Update</button>
+        <Link to={`/updatedr/${_id}`}><button className="btn btn-ghost btn-xs bg-orange-400">Update</button></Link>
         <Link
           onClick={() => handleDelete(_id)}
           className=" ps-2 bg-red-500 p-1 rounded"

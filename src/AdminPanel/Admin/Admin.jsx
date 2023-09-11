@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Footer from "../../Shared/Footer/Footer";
 import Navbar from "../../Shared/Navbar/Navbar";
+import Swal from "sweetalert2";
 
 const Admin = () => {
   const handlePost = (e) => {
@@ -23,8 +24,21 @@ const Admin = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-      });
+        if(data.insertedId) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Success...',
+            text: 'Post Success!',
+          })
+        }
+      })
+      .catch(error => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${error.message}`,
+        })
+      })
   };
   return (
     <div>
@@ -34,7 +48,7 @@ const Admin = () => {
         <div className="drawer-content">
           {/* Page content here */}
           <label htmlFor="my-drawer" className="btn bg-orange-500 text-white hover:bg-orange-600 hover:text-white drawer-button">
-            Open drawer
+            Manage All
           </label>
         </div>
         <div className="drawer-side">
@@ -45,7 +59,7 @@ const Admin = () => {
               <Link to='/managedr'>Manage Dr</Link>
             </li>
             <li>
-              <Link>Manage Patient</Link>
+              <Link to='/appointmentmanage'>Manage Patient</Link>
             </li>
           </ul>
         </div>
