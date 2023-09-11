@@ -32,6 +32,7 @@ const UpdateDr = () => {
               })
         }
     })
+    form.reset()
     .catch(error => {
         Swal.fire({
           icon: 'error',
@@ -102,7 +103,7 @@ const UpdateDr = () => {
           </div>
           <input
             type="submit"
-            value="Submit"
+            value="Update"
             className="btn btn-primary mt-4"
           />
         </form>
