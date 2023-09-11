@@ -9,7 +9,12 @@ const Manage = () => {
   
   const url = `https://bd-doctors-server.vercel.app/appointment?email=${user?.email}`;
   useEffect(() => {
-    fetch(url)
+    fetch(url,{
+      method: 'GET',
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('access-token')}`
+      }
+    })
       .then((res) => res.json())
       .then((data) => setAppointment(data));
   }, [url]);
