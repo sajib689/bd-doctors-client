@@ -16,9 +16,11 @@ const Login = () => {
         loginForm(email,password)
         .then( result => {
             const user = result.user
-            const loggedUser = {
-              email: user?.email
-            }
+            navigate(from, {replace: true})
+
+            // const loggedUser = {
+            //   email: user?.email
+            // }
             if(user){
               Swal.fire({
                 position: 'top-center',
@@ -29,19 +31,18 @@ const Login = () => {
               })
             }
             
-            fetch('https://bd-doctor-client.web.app/jwt',{
-              method: 'POST',
-              headers: {
-                'content-type': 'application/json',
-              },
-              body: JSON.stringify(loggedUser)
-            })
-            .then( res => res.json())
-            .then( data => {
-              // Warning: local storage is not good way
-              localStorage.setItem('access-token', data.token)
-              navigate(from, {replace: true})
-            })
+            // fetch('https://bd-doctor-client.web.app/jwt',{
+            //   method: 'POST',
+            //   headers: {
+            //     'content-type': 'application/json',
+            //   },
+            //   body: JSON.stringify(loggedUser)
+            // })
+            // .then( res => res.json())
+            // .then( data => {
+            //   // Warning: local storage is not good way
+            //   localStorage.setItem('access-token', data.token)
+            // })
            
         })
         .catch(error => {
