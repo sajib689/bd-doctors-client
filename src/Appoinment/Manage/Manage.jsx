@@ -2,11 +2,12 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProviders";
 import ManageCard from "../ManageCard/ManageCard";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const Manage = () => {
   const { user } = useContext(AuthContext);
   const [appointment, setAppointment] = useState([]);
-  
+  const navigate = useNavigate();
   const url = `https://bd-doctors-server.vercel.app/appointment?email=${user?.email}`;
   useEffect(() => {
     fetch(url,{
@@ -16,8 +17,15 @@ const Manage = () => {
       }
     })
       .then((res) => res.json())
-      .then((data) => setAppointment(data));
-  }, [url]);
+      .then((data) => {
+        if(!data.error) {
+          setAppointment(data)
+        }
+        else {
+          navigate('/')
+        }
+      });
+  }, [url,navigate]);
   const handleDelete = _id => {
     fetch(`https://bd-doctors-server.vercel.app/appointment/${_id}`,{
         method: 'DELETE',

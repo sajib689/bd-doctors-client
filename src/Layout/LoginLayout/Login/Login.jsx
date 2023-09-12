@@ -17,7 +17,7 @@ const Login = () => {
         .then( result => {
             const user = result.user
             const loggedUser = {
-              email: user.email
+              email: user?.email
             }
             if(user){
               Swal.fire({
@@ -29,7 +29,7 @@ const Login = () => {
               })
             }
             
-            fetch('http://localhost:3000/jwt',{
+            fetch('https://bd-doctor-client.web.app/jwt',{
               method: 'POST',
               headers: {
                 'content-type': 'application/json',
@@ -38,7 +38,6 @@ const Login = () => {
             })
             .then( res => res.json())
             .then( data => {
-              console.log('jwt token',data)
               // Warning: local storage is not good way
               localStorage.setItem('access-token', data.token)
               navigate(from, {replace: true})
